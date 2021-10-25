@@ -28,11 +28,7 @@ fun main() {
 
         var add = 0L
 
-        for (i in trees) {
-            if (i > mid) {
-                add += i.minus(mid)
-            }
-        }
+        trees.forEach { add+=it.minus(mid).coerceAtLeast(0) }
 
         if (add < len) {
             right = mid
