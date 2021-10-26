@@ -41,7 +41,7 @@ fun main() {
     println()
 }
 
-fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<Int>) {
+private fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<Int>) {
     visited.add(v) //해당 노드를 방문했다고 표시
     print("$v ")
     for (j in graph[v]!!) {
@@ -51,7 +51,7 @@ fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<
     }
 }
 
-fun bfs(graph: LinkedHashMap<Int, LinkedList<Int>>, visited: LinkedList<Int>, toVisit: Queue<Int>) {
+private fun bfs(graph: LinkedHashMap<Int, LinkedList<Int>>, visited: LinkedList<Int>, toVisit: Queue<Int>) {
     val v = toVisit.poll() ?: return
 
     if (!visited.contains(v)) {
