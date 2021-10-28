@@ -24,21 +24,26 @@ fun main() {
                 w.write((queue.poll() ?: -1).toString() + "\n")
             }
             "front" -> {
-                try {
-                    w.write((queue.first()).toString()+"\n")
-                } catch (e: NoSuchElementException) {
-                    w.write("-1\n")
-                }
+                w.write(
+                    try {
+                        queue.first()
+                    } catch (e: NoSuchElementException) {
+                        -1
+                    }.toString() + "\n"
+                )
             }
             "back" -> {
-                try {
-                    w.write((queue.last()).toString()+"\n")
-                } catch (e: NoSuchElementException) {
-                    w.write("-1\n")
-                }
+                w.write(
+                    try {
+                        queue.last()
+                    } catch (e: NoSuchElementException) {
+                        -1
+                    }.toString() + "\n"
+                )
+
             }
             "size" -> {
-                w.write((queue.size).toString()+"\n")
+                w.write((queue.size).toString() + "\n")
             }
             "empty" -> {
                 w.write(if (queue.isEmpty()) "1\n" else "0\n")
