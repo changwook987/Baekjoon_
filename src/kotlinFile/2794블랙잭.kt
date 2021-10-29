@@ -14,7 +14,7 @@ fun main() = with(Scanner(System.`in`)) {
 private var approximation = -1
 //영어로 근사값 이래요
 
-fun search(numbers: List<Int>, goal: Int, used: List<Int> = emptyList()) {
+private fun search(numbers: List<Int>, goal: Int, used: List<Int> = emptyList()) {
     for (i in numbers.indices) {
         if (!used.contains(i)) {
             val newUsed = used.plus(i)

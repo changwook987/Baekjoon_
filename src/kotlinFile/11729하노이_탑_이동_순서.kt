@@ -9,7 +9,7 @@ import kotlin.math.pow
 private val r = BufferedReader(InputStreamReader(System.`in`))
 private val w = BufferedWriter(OutputStreamWriter(System.out))
 
-fun move(size: Int, from: Int = 1, to: Int = 3) {
+private fun move(size: Int, from: Int = 1, to: Int = 3) {
     val tmp = 6.minus(from.plus(to))
 
     if (size == 1) {

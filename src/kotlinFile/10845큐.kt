@@ -9,7 +9,7 @@ import java.util.*
 private val r = BufferedReader(InputStreamReader(System.`in`))
 private val w = BufferedWriter(OutputStreamWriter(System.out))
 
-fun r() = r.readLine().split(' ')
+private fun r() = r.readLine().split(' ')
 
 fun main() {
     val queue: Queue<Int> = LinkedList()
