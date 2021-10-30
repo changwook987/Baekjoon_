@@ -21,7 +21,7 @@ fun main() {
     val find = read()
 
     for (f in find) {
-        w.write((if (list.binarySearch(f) >= 0) "1" else "0") + "\n")
+        w.write((if (list.binarySearch(f) >= 0) "1" else "0") + " ")
     }
     w.flush()
 }
