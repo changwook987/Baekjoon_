@@ -1,3 +1,3 @@
 package kotlinFile
 
-fun main() = java.io.BufferedReader(java.io.InputStreamReader(System.`in`)).readLines().forEach { println(it) }
+fun main() = System.`in`.bufferedReader().readLines().forEach { println(it) }

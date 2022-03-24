@@ -2,9 +2,12 @@ package kotlinFile
 
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
+import java.util.StringTokenizer
 
 fun main() {
     val w = BufferedWriter(OutputStreamWriter(System.out))
+
+    fun read() = with(StringTokenizer(readln())){List(countTokens()){nextToken().toInt()} }
 
     while (true) {
         read().apply {
@@ -20,11 +23,5 @@ fun main() {
                 }
             )
         }
-    }
-}
-
-fun read(): List<Int> {
-    readLine()!!.split(' ').apply {
-        return listOf(get(0).toInt(), get(1).toInt(), get(2).toInt()).sorted()
     }
 }

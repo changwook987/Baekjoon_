@@ -2,6 +2,13 @@ package kotlinFile
 
 fun main() {
     val n = readLine()!!
+    fun String.addAll(): Int {
+        var cnt = 0
+        for (i in this) {
+            cnt += i.digitToInt()
+        }
+        return cnt
+    }
     println(
         if (n == "30") n
         else {
@@ -15,10 +22,3 @@ fun main() {
     )
 }
 
-fun String.addAll(): Int {
-    var cnt = 0
-    for (i in this) {
-        cnt += i.digitToInt()
-    }
-    return cnt
-}

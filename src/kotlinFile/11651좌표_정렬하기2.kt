@@ -1,15 +1,16 @@
 package kotlinFile
 
-class pos(val x: Int, val y: Int) {
-    override fun toString(): String {
-        return "$x $y"
-    }
-}
+
 
 fun main() {
+    class Pos(val x: Int, val y: Int) {
+        override fun toString(): String {
+            return "$x $y"
+        }
+    }
     val list = List(readLine()!!.toInt()) {
         readLine()!!.split(' ').run {
-            pos(get(0).toInt(), get(1).toInt())
+            Pos(get(0).toInt(), get(1).toInt())
         }
     }.sortedWith(
         compareBy({ it.y }, { it.x })

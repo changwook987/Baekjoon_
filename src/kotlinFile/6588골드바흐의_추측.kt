@@ -3,18 +3,18 @@ package kotlinFile
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 
-private fun Int.isPrime(): Boolean {
-    if (this < 2) return false
-    var i = 2
-    while (i * i <= this) {
-        if (this % i == 0) return false
-        i++
-    }
-    return true
-}
-
 fun main() {
     val w = BufferedWriter(OutputStreamWriter(System.out))
+    fun Int.isPrime(): Boolean {
+        if (this < 2) return false
+        var i = 2
+        while (i * i <= this) {
+            if (this % i == 0) return false
+            i++
+        }
+        return true
+    }
+
     while (true) {
         val n = readLine()!!.toInt()
         if (n == 0) break

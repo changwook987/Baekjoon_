@@ -1,7 +1,7 @@
 package kotlinFile
 
 fun main() {
-    val n = readLine()!!.toInt()
+    val n = readln().toInt()
     for (i in 1..n) {
         for (j in 0 until n.minus(i)) {
             print(' ')

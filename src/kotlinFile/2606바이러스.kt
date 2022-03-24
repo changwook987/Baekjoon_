@@ -24,18 +24,18 @@ fun main() {
         }
     }
 
+    fun dfs(graph: Map<Int, Set<Int>>, v: Int, visited: MutableList<Boolean>): MutableList<Boolean> {
+        visited[v] = true
+        var visit = visited
+        for (i in graph[v] ?: return visited) {
+            if (!visit[i])
+                visit = dfs(graph, i, visited)
+        }
+        return visit
+    }
+
     val visited = dfs(computer, 0, MutableList(numOfComputer) { false })
     println(
         visited.count { it }.minus(1)
     )
-}
-
-private fun dfs(graph: Map<Int, Set<Int>>, v: Int, visited: MutableList<Boolean>): MutableList<Boolean> {
-    visited[v] = true
-    var visit = visited
-    for (i in graph[v] ?: return visited) {
-        if (!visit[i])
-            visit = dfs(graph, i, visited)
-    }
-    return visit
 }

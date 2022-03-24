@@ -3,6 +3,7 @@ package kotlinFile
 import java.util.*
 
 fun main() {
+    fun read() = with(StringTokenizer(readln())) { List(countTokens()) { nextToken().toInt() } }
     val (v, e) = read()
 
     val first = readln().toInt() - 1
@@ -45,5 +46,3 @@ fun main() {
 
     println(dist.joinToString("\n") { if (it == Int.MAX_VALUE) "INF" else it.toString() })
 }
-
-fun read() = StringTokenizer(readln()).run { List(countTokens()) { nextToken().toInt() } }

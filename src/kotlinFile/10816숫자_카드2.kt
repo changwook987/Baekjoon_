@@ -5,6 +5,8 @@ import java.io.OutputStreamWriter
 import java.util.*
 
 fun main() {
+    fun read() = with(StringTokenizer(readln())) { List(countTokens()) { nextToken().toInt() } }
+
     val items = read().groupingBy { it }.eachCount()
     val cards = read()
     val w = BufferedWriter(OutputStreamWriter(System.out))
@@ -13,10 +15,4 @@ fun main() {
         w.write((items[i] ?: 0).toString() + " ")
     }
     w.flush()
-}
-
-fun read(): List<Int> {
-    val n = readLine()!!.toInt()
-    val token = StringTokenizer(readLine())
-    return List(n) { token.nextToken().toInt() }
 }

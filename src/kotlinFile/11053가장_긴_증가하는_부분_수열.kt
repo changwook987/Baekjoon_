@@ -6,10 +6,6 @@ fun main() {
     val n = readLine()!!.toInt()
     val list = StringTokenizer(readLine()).run { List(n) { nextToken().toInt() } }
 
-    println(len(list))
-}
-
-fun len(list: List<Int>): Int {
     val arr = Array(list.size) { 1 }
 
     for (i in list.indices) {
@@ -20,5 +16,7 @@ fun len(list: List<Int>): Int {
         }
     }
 
-    return arr.maxOf { it }
+
+    println(list.maxOf { it })
 }
+

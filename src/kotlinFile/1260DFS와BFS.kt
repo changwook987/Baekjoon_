@@ -10,6 +10,30 @@ fun main() {
 
     val startNode = input.nextToken().toInt()
 
+    fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<Int>) {
+        visited.add(v) //해당 노드를 방문했다고 표시
+        print("$v ")
+        for (j in graph[v]!!) {
+            if (!visited.contains(j)) { //visited[j]==0
+                dfs(graph, j, visited)
+            }
+        }
+    }
+
+    fun bfs(graph: LinkedHashMap<Int, LinkedList<Int>>, visited: LinkedList<Int>, toVisit: Queue<Int>) {
+        val v = toVisit.poll() ?: return
+
+        if (!visited.contains(v)) {
+            print("$v ")
+            visited.add(v)
+            graph[v]?.forEach {
+                if (!visited.contains(it) && !toVisit.contains(it)) {
+                    toVisit.offer(it)
+                }
+            }
+            bfs(graph, visited, toVisit)
+        }
+    }
 
     val graph = LinkedHashMap<Int, LinkedList<Int>>()
 
@@ -41,27 +65,3 @@ fun main() {
     println()
 }
 
-private fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<Int>) {
-    visited.add(v) //해당 노드를 방문했다고 표시
-    print("$v ")
-    for (j in graph[v]!!) {
-        if (!visited.contains(j)) { //visited[j]==0
-            dfs(graph, j, visited)
-        }
-    }
-}
-
-private fun bfs(graph: LinkedHashMap<Int, LinkedList<Int>>, visited: LinkedList<Int>, toVisit: Queue<Int>) {
-    val v = toVisit.poll() ?: return
-
-    if (!visited.contains(v)) {
-        print("$v ")
-        visited.add(v)
-        graph[v]?.forEach {
-            if (!visited.contains(it) && !toVisit.contains(it)) {
-                toVisit.offer(it)
-            }
-        }
-        bfs(graph, visited, toVisit)
-    }
-}

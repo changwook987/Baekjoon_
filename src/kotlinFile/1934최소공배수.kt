@@ -1,10 +1,11 @@
 package kotlinFile
 
-fun u(a: Int, b: Int): Int {
-    return if (a % b != 0) u(b, a % b) else b
-}
 
 fun main() {
+    fun u(a: Int, b: Int): Int {
+        return if (a % b != 0) u(b, a % b) else b
+    }
+
     List(readLine()!!.toInt()) {
         readLine()!!.split(' ').run {
             val a = get(0).toInt()
