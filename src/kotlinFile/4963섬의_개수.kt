@@ -1,14 +1,9 @@
 package kotlinFile
 
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileInputStream
-import java.io.InputStreamReader
 import java.util.*
 
 fun main() {
-    System.setIn(FileInputStream(File("src/test/input.txt")))
-    val stringTokenizer = StringTokenizer(BufferedReader(InputStreamReader(System.`in`)).readLines().joinToString(" "))
+    val stringTokenizer = StringTokenizer(System.`in`.bufferedReader().readLines().joinToString(" "))
     with(stringTokenizer) {
         while (hasMoreTokens()) {
             val x = nextToken().toInt()
