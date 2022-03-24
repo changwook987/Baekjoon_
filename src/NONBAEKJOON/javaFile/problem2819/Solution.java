@@ -1,6 +1,5 @@
 package NONBAEKJOON.javaFile.problem2819;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.SortedSet;
