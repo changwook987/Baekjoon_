@@ -3,7 +3,12 @@ package kotlinFile
 import java.util.*
 
 fun main() {
-    data class Pos(val x: Int, val y: Int)
+    data class Pos(val x: Int, val y: Int) : Comparable<Pos> {
+        override fun compareTo(other: Pos): Int {
+            return if (y == other.y) x - other.x
+            else y - other.y
+        }
+    }
 
     val queue: Queue<Pair<Pos, Int>> = LinkedList()
 
@@ -28,7 +33,7 @@ fun main() {
 
     while (true) {
         val visited = ArrayList<Pos>()
-        val next = ArrayList<Pos>()
+        val next: SortedSet<Pos> = TreeSet()
 
         var leastDepth = Int.MAX_VALUE
 
@@ -65,7 +70,7 @@ fun main() {
 
             time += leastDepth
 
-            next.sortedWith(compareBy({ it.y }, { it.x })).first().let {
+            next.first().let {
                 queue += it to 0
 
                 val (x, y) = it
