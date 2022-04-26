@@ -1,22 +1,18 @@
 package kotlinFile
 
-fun main() {
-    val n = readLine()!!.toInt()
+fun main() = repeat(readln().toInt()) {
+    println(
+        if (
+            readln().let {
+                if (it.length != 7) false
+                else {
+                    val a = it[0]
+                    val b = it[2]
 
-    var list = emptyList<Int>()
-
-    repeat(n) {
-        readLine()!!.apply {
-            list = if (length == 7)
-                if ("1122122" == replace(get(0), '1').replace(get(3), '2')) {
-                    list.plus(1)
-                } else
-                    list.plus(0)
-            else
-                list.plus(0)
-        }
-    }
-    for (i in list) {
-        println(i)
-    }
+                    it.replace(a, '1').replace(b, '2') == "1122122"
+                }
+            }
+        ) 1
+        else 0
+    )
 }
