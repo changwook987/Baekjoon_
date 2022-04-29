@@ -15,25 +15,29 @@ fun main() {
 
     val visited = BooleanArray(size)
 
-    fun dfs(cur: Int, dist: Int): Int {
+    fun dfs(cur: Int, dist: Int): Pair<Int, Int> {
         var max = 0
+        var last = 0
 
         visited[cur] = true
 
         for ((i, d) in graph[cur]) {
             if (visited[i]) continue
 
-            max = maxOf(max, dfs(i, dist + d))
+            val (value, l) = dfs(i, dist + d)
+
+            if (max < value) {
+                max = value
+                last = l
+            }
         }
 
         visited[cur] = false
 
-        return if (max == 0) dist else max
+        return if (max == 0) {
+            dist to cur
+        } else max to last
     }
 
-    var max = 0
-    repeat(size) {
-        max = maxOf(dfs(it, 0), max)
-    }
-    println(max)
+    println(dfs(dfs(0, 0).second, 0).first)
 }
