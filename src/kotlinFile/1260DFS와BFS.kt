@@ -3,65 +3,49 @@ package kotlinFile
 import java.util.*
 
 fun main() {
-    var input = StringTokenizer(readLine())
+    fun r() = readln().split(" ").map { it.toInt() - 1 }
+    var (v, e, s) = r()
+    v++
+    e++
+    val graph = List<SortedSet<Int>>(v) { TreeSet() }
 
-    val nodeCnt = input.nextToken().toInt()
-    val edgeCnt = input.nextToken().toInt()
+    repeat(e) {
+        val (a, b) = r()
 
-    val startNode = input.nextToken().toInt()
+        graph[a] += b
+        graph[b] += a
+    }
 
-    fun dfs(graph: LinkedHashMap<Int, LinkedList<Int>>, v: Int, visited: LinkedList<Int>) {
-        visited.add(v) //해당 노드를 방문했다고 표시
-        print("$v ")
-        for (j in graph[v]!!) {
-            if (!visited.contains(j)) { //visited[j]==0
-                dfs(graph, j, visited)
-            }
+    var visited = BooleanArray(v)
+
+    fun dfs(cur: Int) {
+        print("${cur + 1} ")
+        visited[cur] = true
+        for (i in graph[cur]) {
+            if (visited[i]) continue
+            dfs(i)
         }
     }
 
-    fun bfs(graph: LinkedHashMap<Int, LinkedList<Int>>, visited: LinkedList<Int>, toVisit: Queue<Int>) {
-        val v = toVisit.poll() ?: return
+    fun bfs(cur: Int) {
+        val queue: Queue<Int> = LinkedList()
+        val sb = StringBuilder()
+        queue += cur
 
-        if (!visited.contains(v)) {
-            print("$v ")
-            visited.add(v)
-            graph[v]?.forEach {
-                if (!visited.contains(it) && !toVisit.contains(it)) {
-                    toVisit.offer(it)
-                }
-            }
-            bfs(graph, visited, toVisit)
+        while (queue.isNotEmpty()) {
+            val c = queue.poll()
+
+            if (visited[c]) continue
+            visited[c] = true
+            queue += graph[c]
+            sb.append("${c + 1} ")
         }
+
+        println(sb)
     }
 
-    val graph = LinkedHashMap<Int, LinkedList<Int>>()
-
-    for (i in 1..nodeCnt) {
-        graph[i] = LinkedList()
-    }
-
-    repeat(edgeCnt) {
-        input = StringTokenizer(readLine())
-
-        val node = input.nextToken().toInt()
-        val linkedNode = input.nextToken().toInt()
-
-        graph[node]?.add(linkedNode)
-        graph[linkedNode]?.add(node)
-    }
-
-    for (i in 1..nodeCnt) {
-        graph[i]?.sort()
-    }
-
-    dfs(graph, startNode, LinkedList())
+    dfs(s)
     println()
-
-
-    val toVisit: Queue<Int> = LinkedList()
-    toVisit.offer(startNode)
-    bfs(graph, LinkedList(), toVisit)
-    println()
+    visited = BooleanArray(v)
+    bfs(s)
 }
-
