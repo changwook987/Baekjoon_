@@ -1,4 +1,4 @@
-package kotlinFile
+package problem1026
 
 import java.util.*
 

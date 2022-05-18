@@ -1,4 +1,4 @@
-package kotlinFile
+package problem1032
 
 fun main() {
     val n = readLine()!!.toInt()
