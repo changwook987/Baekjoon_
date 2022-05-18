@@ -2,4 +2,4 @@
 !*.c
 !readme.md
 !.gitignore
-!.vscode
+!.vscode/
