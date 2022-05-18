@@ -1,0 +1,5 @@
+*
+!*.c
+!readme.md
+!.gitignore
+!.vscode
