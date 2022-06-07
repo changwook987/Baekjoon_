@@ -1,12 +1,10 @@
 package problem11444
 
 const val MOD: Int = 1_000_000_007
-var origin: Array<LongArray> = emptyArray()
 
 fun main() {
     val b = readln().toLong()
-    origin = arrayOf(longArrayOf(1L, 1L), longArrayOf(1L, 0L))
-    println((origin pow b)[0][1])
+    println((arrayOf(longArrayOf(1L, 1L), longArrayOf(1L, 0L)) pow b)[0][1])
 }
 
 operator fun Array<LongArray>.times(other: Array<LongArray>): Array<LongArray> {
@@ -28,7 +26,7 @@ infix fun Array<LongArray>.pow(exp: Long): Array<LongArray> {
         var ret = pow(exp / 2)
         ret *= ret
 
-        if (exp % 2 == 1L) ret *= origin
+        if (exp % 2 == 1L) ret *= this
 
         ret
     }
